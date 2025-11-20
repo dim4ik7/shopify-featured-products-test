@@ -28,18 +28,29 @@
     {% if section.settings.collection != blank and shop.products_count != 0 %}
       {% paginate section.settings.collection.products by max_items %}
       {% for product in section.settings.collection.products limit: max_items %}
-                <div
-                  class="resource-list__item"
-                >
-                  {% # theme-check-disable UniqueStaticBlockId %}
-                    {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %}
-                  {% # theme-check-enable UniqueStaticBlockId %}
-                </div>
 
-                {% unless forloop.last %}
-                  <!--@list/split-->
-                {% endunless %}
-              {% endfor %}
+        {%- assign in_cart = false -%}
+
+        {%- for item in cart.items -%}
+          {%- if item.product.id == product.id -%}
+            {%- assign in_cart = true -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {% unless in_cart %}
+          <div class="resource-list__item">
+            {% # theme-check-disable UniqueStaticBlockId %}
+              {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %}
+            {% # theme-check-enable UniqueStaticBlockId %}
+          </div>
+
+          {% unless forloop.last %}
+            <!--@list/split-->
+          {% endunless %}
+        {% endunless %}
+
+      {% endfor %}
 
       {% endpaginate %}
     {% else %}
@@ -56,6 +67,7 @@
           <!--@list/split-->
         {% endunless %}
       {% endfor %}
+      {{ 'featured-products.js' | asset_url | script_tag }}
     {% endif %}
   {% endcapture %}
 
