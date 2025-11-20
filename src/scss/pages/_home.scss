@@ -1,0 +1,18 @@
+@use "../source/mixins" as *;
+@use "../source/variables" as *;
+@use "../source/colors" as *;
+
+
+// Featured Products block
+
+.featured-home-block {
+  .text-block.h2 > h3 {
+    @include lib-css(color, $color-featured-title);
+    @include lib-font-size(26);
+    @include lib-line-height(36);
+  }
+
+  .section-resource-list__header {
+    margin-bottom: 4px;
+  }
+}
