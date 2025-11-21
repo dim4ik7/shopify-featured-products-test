@@ -6,6 +6,8 @@
 // Featured Products block
 
 .featured-home-block {
+  display: block;
+
   .text-block.h2 > h3 {
     @include lib-css(color, $color-featured-title);
     @include lib-font-size(26);
@@ -13,6 +15,62 @@
   }
 
   .section-resource-list__header {
-    margin-bottom: 4px;
+    margin-bottom: 30px;
+  }
+
+  .resource-list--grid {
+    gap: 50px;
+  }
+
+  .text-block {
+    p,
+    .price {
+      @include lib-css(color, $color-featured-title);
+    }
+
+    p {
+      @include lib-font-size(22);
+      @include lib-line-height(42);
+      @include lib-css(font-weight, $font-weight__bold);
+    }
+
+    .price {
+      @include lib-font-size(16);
+      @include lib-line-height(26);
+      @include lib-css(font-weight, $font-weight__regular);
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .featured-home-block {
+    display: grid;
+
+    .resource-list--grid {
+      gap: 50px 40px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .featured-home-block {
+    gap: 0;
+
+    .text-block.h2 > h3 {
+      @include lib-font-size(42);
+      @include lib-line-height(42);
+    }
+
+    .section-resource-list__header {
+      margin-bottom: 60px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .featured-home-block {
+    .resource-list--grid {
+      gap: 120px 40px;
+    }
   }
 }

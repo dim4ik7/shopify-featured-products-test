@@ -91,11 +91,11 @@
 @mixin lib-font-size(
   $sizeValue
 ) {
-  @include lib-css(font-size, calc(26 / 16) * 1rem);
+  @include lib-css(font-size, calc($sizeValue / 16) * 1rem);
 }
 
 @mixin lib-line-height(
   $sizeValue
 ) {
-  @include lib-css(line-height, calc(26 / 16) * 1rem);
+  @include lib-css(line-height, calc($sizeValue / 16) * 1rem);
 }
