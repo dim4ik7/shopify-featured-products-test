@@ -1,7 +1,7 @@
-@use 'variables';
-@use 'buttons';
-@use 'header';
-@use 'mixins';
+@use "source/mixins" as *;
+@use "source/variables" as *;
+@use "source/colors" as *;
+@use "pages/home" as *;
 
 body.page-main {
   @include lib-css(background, $color-main-background);

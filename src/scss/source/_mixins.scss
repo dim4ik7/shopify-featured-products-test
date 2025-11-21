@@ -1,0 +1,101 @@
+@mixin lib-vendor-prefix-display(
+  $_value: flex
+) {
+  display: -webkit-#{$_value};
+  display: -ms-#{$_value}box;
+  display: $_value;
+}
+
+@mixin lib-vendor-prefix-flex-grow(
+  $_value: 0
+) {
+  -webkit-flex-grow: $_value;
+  flex-grow: $_value;
+}
+
+@mixin lib-vendor-prefix-flex-shrink(
+  $_value: 1
+) {
+  -webkit-flex-shrink: $_value;
+  flex-shrink: $_value;
+}
+
+@mixin lib-vendor-prefix-flex-basis(
+  $_value: auto
+) {
+  -webkit-flex-basis: $_value;
+  flex-basis: $_value;
+}
+
+@mixin lib-vendor-prefix-flex-wrap(
+  $_value: wrap
+) {
+  -webkit-flex-wrap: $_value;
+  flex-wrap: $_value;
+}
+
+@mixin lib-vendor-prefix-flex-direction(
+  $_value: column
+) {
+  -webkit-flex-direction: $_value;
+  -ms-flex-direction: $_value;
+  flex-direction: $_value;
+}
+
+@mixin lib-vendor-prefix-order(
+  $_value: 0
+) {
+  -ms-flex-order: $_value;
+  -webkit-order: $_value;
+  order: $_value;
+}
+
+@mixin lib-vendor-box-align(
+  $_value: stretch
+) {
+  -webkit-align-items: $_value;
+  -ms-align-items: $_value;
+  align-items: $_value;
+}
+
+@mixin lib-vendor-prefix-appearance(
+  $_value: none
+) {
+  -webkit-appearance: $_value;
+  -moz-appearance: $_value;
+  appearance: $_value;
+}
+
+@mixin lib-vendor-prefix-column-count(
+  $_value
+) {
+  -webkit-column-count: $_value;
+  -moz-column-count: $_value;
+  column-count: $_value;
+}
+
+@mixin lib-css(
+  $_property,
+  $_value,
+  $_prefix: 0
+) {
+  @if $_prefix == 1 and $_value != '' and $_value != false {
+    display: -webkit-#{$_value};
+    display: -ms-#{$_value}box;
+    display: $_value;
+  } @else if $_prefix == 0 and $_value != '' and $_value != false {
+    #{$_property}: $_value;
+  }
+}
+
+@mixin lib-font-size(
+  $sizeValue
+) {
+  @include lib-css(font-size, calc($sizeValue / 16) * 1rem);
+}
+
+@mixin lib-line-height(
+  $sizeValue
+) {
+  @include lib-css(line-height, calc($sizeValue / 16) * 1rem);
+}
